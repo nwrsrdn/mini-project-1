@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import socketIoClient from 'socket.io-client';
 import DataTable from './DataTable';
+import './App.css'
 
 const ENDPOINT = 'wss://localhost:3030';
 
@@ -19,7 +20,7 @@ function App() {
     }, []);
 
     return (
-        <div>
+        <div className='App'>
             <DataTable data={datasets} />
         </div>
     );
