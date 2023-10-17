@@ -41,7 +41,7 @@ const onConnection = (socket) => {
   chokidar.watch(FILE)
     .on('ready', sendData)
     .on('change', sendData)
-    .on('unlink', path => io.emit('log', `${path} is missing`))
+    .on('unlink', path => io.emit('log', `File "metrics.csv" has been deleted or moved to another directory!`))
     .on('error', error => io.emit('log', `Watcher error: ${error}`))
 }
 

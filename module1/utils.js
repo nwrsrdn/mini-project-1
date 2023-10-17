@@ -10,7 +10,7 @@ const getFileData = (file) => {
       const data = readFileSync(file, 'utf-8')
       return data
     } catch (err) {
-      throw new Error(`${file} is missing!`)
+      throw new Error(`File "metrics.csv" is missing!`)
     }
   }
 
