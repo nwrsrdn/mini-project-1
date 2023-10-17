@@ -6,10 +6,20 @@ const {
   CERT, KEY, FILE, getFileData, transformData
 } = require('./utils')
 
-const httpsServer = createServer({
+const options = {
   cert: getFileData(CERT),
   key: getFileData(KEY)
+}
+
+const httpsServer = createServer(options, (req, res) => {
+  if (req.url === '/metrics' && req.method === 'GET') {
+    const data = getFileData(FILE)
+
+    res.writeHead(200, { 'Content-Type': 'text/csv' })
+    res.end(data)
+  }
 })
+
 const io = new Server(httpsServer, {
   cors: {
     origin: "http://localhost:3000"

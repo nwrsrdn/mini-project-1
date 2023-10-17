@@ -6,8 +6,7 @@ const KEY = join(__dirname, 'private-key.pem')
 const FILE = join(__dirname, 'metrics.csv')
 
 const getFileData = (file) => {
-    const data = readFileSync(file, 'utf-8')
-    return data
+    return readFileSync(file, 'utf-8')
   }
 
 const transformData = (data) => {
