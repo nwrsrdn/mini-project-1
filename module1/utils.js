@@ -6,7 +6,12 @@ const KEY = join(__dirname, 'private-key.pem')
 const FILE = join(__dirname, 'metrics.csv')
 
 const getFileData = (file) => {
-    return readFileSync(file, 'utf-8')
+    try {
+      const data = readFileSync(file, 'utf-8')
+      return data
+    } catch (err) {
+      throw new Error(`${file} is missing!`)
+    }
   }
 
 const transformData = (data) => {

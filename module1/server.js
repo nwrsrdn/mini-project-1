@@ -26,13 +26,23 @@ const io = new Server(httpsServer, {
   }
 })
 
-const onConnection = (socket) => {
-  io.emit('log', 'You are connected to the server!')
-  chokidar.watch(FILE).on('all', () => {
+const sendData = () => {
+  try {
     const rawData = getFileData(FILE)
     const data = transformData(rawData)
     io.emit('newData', data)
-  })
+  } catch (err) {
+    io.emit('log', err.message)
+  }
+}
+
+const onConnection = (socket) => {
+  io.emit('log', 'You are connected to the server!')
+  chokidar.watch(FILE)
+    .on('ready', sendData)
+    .on('change', sendData)
+    .on('unlink', path => io.emit('log', `${path} is missing`))
+    .on('error', error => io.emit('log', `Watcher error: ${error}`))
 }
 
 io.on('connection', onConnection)
