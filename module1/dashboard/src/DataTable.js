@@ -17,7 +17,7 @@ function DataTable({ data }) {
           <tr key={index}>
             <td>{item.rank}</td>
             <td>{item.country}</td>
-            <td>{item.Score}</td>
+            <td>{item.score}</td>
             {/* Add more <td> elements for other data values */}
           </tr>
         ))}
