@@ -13,4 +13,10 @@ router.get('/:id', async (req, res, next) => {
   res.status(200).json(sensorData)
 })
 
+router.post('/', async (req, res, next) => {
+  const sensorData = new SensorData(req.body)
+  const createdSensorData = await sensorData.save()
+  res.status(201).json(createdSensorData)
+})
+
 module.exports = router
