@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const logger = require('../config/loggerConfig')
+const sendEmail = require('../util/sendEmail')
 
 const sensorDataSchema = new mongoose.Schema({
   timestamp: Date,

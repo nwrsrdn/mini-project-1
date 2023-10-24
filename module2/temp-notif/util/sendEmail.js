@@ -21,4 +21,4 @@ const sendEmail = async (data) => {
   transporter.sendMail(mailOptions)
 }
 
-
+module.exports = sendEmail

@@ -37,7 +37,13 @@ const updateSensorData = async (req, res, next) => {
       humidity_percent,
       pressure_hpa
     } = req.body
-    const updateSensorData = await SensorData.findByIdAndUpdate(id, { location, temperature_celsius, humidity_percent, pressure_hpa })
+    const updateSensorData = await SensorData.findByIdAndUpdate(id, {
+      location,
+      temperature_celsius,
+      humidity_percent,
+      pressure_hpa,
+      updated_at: Date.now()
+    })
     res.status(200).json(updateSensorData)
   } catch (error) {
     next(error)
