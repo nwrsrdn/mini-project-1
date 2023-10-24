@@ -19,4 +19,16 @@ router.post('/', async (req, res, next) => {
   res.status(201).json(createdSensorData)
 })
 
+router.put('/', async (req, res, next) => {
+  const {
+    id,
+    location,
+    temperature_celsius,
+    humidity_percent,
+    pressure_hpa
+  } = req.body
+  const updateSensorData = await SensorData.findByIdAndUpdate(id, { location, temperature_celsius, humidity_percent, pressure_hpa })
+  res.status(200).json(updateSensorData)
+})
+
 module.exports = router

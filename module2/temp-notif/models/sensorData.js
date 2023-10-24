@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const sensorDataSchema = new mongoose.Schema({
   timestamp: Date,
+  updated_at: Date,
   location: String,
   temperature_celsius: Number,
   humidity_percent: Number,
