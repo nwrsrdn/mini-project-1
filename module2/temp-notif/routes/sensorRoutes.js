@@ -8,4 +8,9 @@ router.get('/', async (req, res, next) => {
   res.status(200).json(sensorData)
 })
 
+router.get('/:id', async (req, res, next) => {
+  const sensorData = await SensorData.findById(req.params.id)
+  res.status(200).json(sensorData)
+})
+
 module.exports = router
