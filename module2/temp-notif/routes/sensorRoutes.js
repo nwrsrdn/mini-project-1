@@ -31,4 +31,10 @@ router.put('/', async (req, res, next) => {
   res.status(200).json(updateSensorData)
 })
 
+router.delete('/', async (req, res, next) => {
+  const { id } = req.body
+  const deleteSensorData = await SensorData.findByIdAndDelete(id)
+  res.status(202).json(deleteSensorData)
+})
+
 module.exports = router
